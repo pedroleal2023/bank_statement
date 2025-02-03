@@ -1,6 +1,7 @@
 package test;
 
 import main.BankTransaction;
+import main.BankStatementCSVParser;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -9,11 +10,11 @@ import java.time.Month;
 
 public class BankStatementCSVParserTest {
 
-    private final BankStatementCSVParserTest statementParser = new BankStatementCSVParserTest();
+    private final BankStatementCSVParser statementParser = new BankStatementCSVParser();
 
     @Test
-    public void shouldParserOneCorrectLine() throws Exception {
-        final String line ="30-01-2017, -50, Tesco";
+    public void shouldParseOneCorrectLine() throws Exception {
+        final String line = "30/01/2017,-50,Tesco"; // Ajustado para seguir o formato esperado pelo parser
         final BankTransaction result = statementParser.parseFrom(line);
 
         final BankTransaction expected = new BankTransaction(LocalDate.of(2017, Month.JANUARY, 30), -50, "Tesco");
@@ -22,9 +23,5 @@ public class BankStatementCSVParserTest {
         Assert.assertEquals(expected.getDate(), result.getDate());
         Assert.assertEquals(expected.getAmount(), result.getAmount(), tolerance);
         Assert.assertEquals(expected.getDescription(), result.getDescription());
-    }
-
-    private BankTransaction parseFrom(String line) {
-        return null;
     }
 }

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BankTransactionalAnalyzerSimple {
-    private static final String RESOURCES = "src/main/resources";
+    private static final String RESOURCES = "src/main/resources/";
 
     public static void main(final String... args) throws IOException {
 
@@ -22,7 +22,7 @@ public class BankTransactionalAnalyzerSimple {
         final List<BankTransaction> bankTransactions = bankStatementCSVParser.parseLinesFromCSV(lines);
 
         System.out.println("The total for all transactions is " + calculateTotalAmount(bankTransactions));
-        System.out.println("Transactions in January " + selectInMonth(bankTransactions, Month.JANUARY));
+        System.out.println("Transactions in January: " + selectInMonth(bankTransactions, Month.JANUARY));
     }
 
     public static double calculateTotalAmount(final List<BankTransaction> bankTransactions) {
@@ -44,4 +44,3 @@ public class BankTransactionalAnalyzerSimple {
         return bankTransactionsInMonth;
     }
 }
-

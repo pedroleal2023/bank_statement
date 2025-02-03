@@ -29,12 +29,11 @@ public class BankStatementCSVParser implements BankStatementParser {
 
     @Override
     public BankTransaction parseFrom(String statement) {
-        return null;
+        return parseFromCSV(statement);
     }
 
     @Override
     public List<BankTransaction> parseListFrom(List<String> lines) {
-        return List.of();
+        return parseLinesFromCSV(lines);
     }
 }
-
